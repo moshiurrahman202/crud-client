@@ -35,6 +35,21 @@ const Users = ({userInitialData}) => {
         })
         
     }
+    const deleteme = id => {
+        console.log("delete me", id);
+        fetch(`http://localhost:3000/users/${id}`,{
+            method: "DELETE"
+        }).then(res => res.json()).then(data => {
+            if(data.deletedCount){
+                const remainingUsers = users.filter(user => user._id !==id)
+                setUsers(remainingUsers)
+                console.log("the user deleted !");
+                
+            }
+            
+        })
+        
+    }
     return (
         <div>
             <div>
@@ -47,8 +62,9 @@ const Users = ({userInitialData}) => {
                 </form>
             </div>
             <div>
+                <h1>User length {users.length}</h1>
                 {
-                    users.map(item => <p key={item._id}>{item.name} : {item.email}</p>)
+                    users.map(item => <p key={item._id}>{item.name} : {item.email} <button onClick={() => deleteme(item._id)}>X</button></p>)
                 }
             </div>
             
