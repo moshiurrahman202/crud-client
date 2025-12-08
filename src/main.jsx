@@ -6,6 +6,7 @@ import './index.css'
 import App from './App.jsx'
 import Root from './root/Root.jsx';
 import Details from './Components/Details.jsx';
+import UpdateInfo from './Components/UpdateInfo.jsx';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
         path: "users/:id",
         loader: ({params}) => fetch(`http://localhost:3000/users/${params.id}`),
         Component: Details
+      },{
+        path: "updateinfo/:id",
+        loader: ({params}) => fetch(`http://localhost:3000/users/${params.id}`),
+        Component: UpdateInfo
       }
     ]
   },

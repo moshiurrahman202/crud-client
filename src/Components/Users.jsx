@@ -66,7 +66,8 @@ const Users = ({userInitialData}) => {
                 <h1>User length {users.length}</h1>
                 {
                     users.map(item => <p key={item._id}>{item.name} : {item.email} 
-                    <Link to={`/users/${item._id}`}>Details</Link>
+                    <Link cal to={`/users/${item._id}`}>Details</Link>
+                    <Link to={`/updateinfo/${item._id}`}>Update</Link>
                     <button onClick={() => deleteme(item._id)}>X</button></p>)
                 }
             </div>
